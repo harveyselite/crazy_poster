@@ -1,4 +1,4 @@
-# post_campaign.py
+﻿# post_campaign.py
 import argparse, asyncio, json, random, re, sqlite3, sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(r"C:/Crazy_poster")
 DB_PATH = ROOT / "shared-resources" / "database" / "crazy_poster.db"
 
-FB_AUTOMATION = ROOT / "automation-engine" / "facebook_automation"
+FB_AUTOMATION = ROOT / "automation_engine" / "facebook_automation"
 sys.path.append(str(FB_AUTOMATION))
 from facebook_poster_simple import SimpleFacebookPoster
 
@@ -159,20 +159,20 @@ async def run(account: str, campaign_id: int, *, limit=1, attempts=2, publish=Fa
 
         success=False; url=None; shot=None
         for a in range(1, attempts+1):
-            print(f"Attempt {a}/{attempts} …")
+            print(f"Attempt {a}/{attempts} â€¦")
             ok, url, shot = await post_single_listing(account, row, do_publish=publish, listing_tag=tag)
             update_listing_status(lid, attempts_inc=1)
             if ok:
                 success=True
                 update_listing_status(lid, status=("posted" if publish else "prepared"), fb_url=url)
-                print(f"✓ Success ({'published' if publish else 'prepared only'}){f' → {url}' if url else ''}")
+                print(f"âœ“ Success ({'published' if publish else 'prepared only'}){f' â†’ {url}' if url else ''}")
                 break
             else:
-                print("× Failed this attempt.")
+                print("Ã— Failed this attempt.")
 
         if not success:
             update_listing_status(lid, status="failed", error_screenshot=shot)
-            print(f"× Marked as failed. Screenshot: {shot or '(none)'}")
+            print(f"Ã— Marked as failed. Screenshot: {shot or '(none)'}")
 
 def main():
     ap = argparse.ArgumentParser(description="Run Crazy_poster campaign")

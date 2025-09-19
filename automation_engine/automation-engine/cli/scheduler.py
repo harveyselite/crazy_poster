@@ -1,4 +1,4 @@
-# scheduler.py
+﻿# scheduler.py
 import argparse, asyncio, sqlite3, sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(r"C:/Crazy_poster")
 DB_PATH = ROOT / "shared-resources" / "database" / "crazy_poster.db"
 
-CLI = ROOT / "automation-engine" / "cli"
+CLI = ROOT / "automation_engine" / "cli"
 sys.path.append(str(CLI))
 from post_campaign import run as run_campaign
 

@@ -1,4 +1,4 @@
-# set_pending.py
+﻿# set_pending.py
 import sqlite3
 DB = r"C:/Crazy_poster/shared-resources/database/crazy_poster.db"
 CAMPAIGN_ID = 1

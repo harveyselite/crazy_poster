@@ -1,5 +1,5 @@
-# csv_processor.py
-# Crazy_poster — CSV intake, validation, import, and listing retrieval
+﻿# csv_processor.py
+# Crazy_poster â€” CSV intake, validation, import, and listing retrieval
 import csv
 import json
 import re
@@ -330,13 +330,13 @@ def cli_validate(csv_file: str):
     """
     p = Path(csv_file)
     if not p.exists():
-        typer.echo(f"✗ File not found: {p}")
+        typer.echo(f"âœ— File not found: {p}")
         raise typer.Exit(code=1)
 
     rows, headers = read_csv_rows(p)
     res = validate_rows(rows, headers)
 
-    typer.echo(f"CSV Validation: {'✓ VALID' if res.valid else '✗ INVALID'}")
+    typer.echo(f"CSV Validation: {'âœ“ VALID' if res.valid else 'âœ— INVALID'}")
     typer.echo(f"Rows: {res.row_count}")
     if res.errors:
         typer.echo("\nErrors:")
@@ -358,18 +358,18 @@ def cli_import(csv_file: str, campaign_name: str):
     """
     p = Path(csv_file)
     if not p.exists():
-        typer.echo(f"✗ File not found: {p}")
+        typer.echo(f"âœ— File not found: {p}")
         raise typer.Exit(code=1)
 
     rows, headers = read_csv_rows(p)
     res = validate_rows(rows, headers)
     if not res.valid:
-        typer.echo("✗ Import blocked: CSV failed validation. Run `validate` and fix issues.")
+        typer.echo("âœ— Import blocked: CSV failed validation. Run `validate` and fix issues.")
         raise typer.Exit(code=2)
 
     cid = get_or_create_campaign(campaign_name, Path(csv_file).name)
     count = import_rows(cid, rows)
-    typer.echo(f"✓ Imported {count} listings into campaign '{campaign_name}' (ID {cid})")
+    typer.echo(f"âœ“ Imported {count} listings into campaign '{campaign_name}' (ID {cid})")
 
 @app.command("campaigns")
 def cli_campaigns():
@@ -393,7 +393,7 @@ def cli_listings(campaign_id: int, limit: int = 10):
         return
     typer.echo(f"Showing up to {limit} listings for campaign {campaign_id}:\n" + "-"*80)
     for i, it in enumerate(lst[:limit], start=1):
-        typer.echo(f"{i:>2}. {it['year']} {it['make']} {it['model']} — ${it['price']} | images: {len(it['images'])}")
+        typer.echo(f"{i:>2}. {it['year']} {it['make']} {it['model']} â€” ${it['price']} | images: {len(it['images'])}")
         typer.echo(f"    Title: {it.get('title','')[:64]}")
         typer.echo(f"    Desc : {it['description'][:64]}...")
         if i == limit:

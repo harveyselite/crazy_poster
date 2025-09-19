@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, BackgroundTasks
+﻿from fastapi import FastAPI, UploadFile, File, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.date import DateTrigger
@@ -54,7 +54,7 @@ async def run_campaign(csv_path: str, account_name: str):
     log_file = LOGS / f"run-{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}.log"
     cmd = [
         "python",
-        str(BASE / "automation-engine" / "cli" / "post_campaign.py"),
+        str(BASE / "automation_engine" / "cli" / "post_campaign.py"),
         "--account", account_name,
         "--csv", csv_path,
         "--headless", "0",

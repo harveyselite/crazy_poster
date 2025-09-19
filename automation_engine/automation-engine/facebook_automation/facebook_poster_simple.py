@@ -1,4 +1,4 @@
-# facebook_poster_simple.py
+﻿# facebook_poster_simple.py
 import asyncio, json, os, random, time
 from io import BytesIO
 from pathlib import Path
@@ -326,7 +326,7 @@ class SimpleFacebookPoster:
                     saved.append(str(dest))
                 except Exception as e:
                     self.log(f"Skip image {idx}: {e}")
-        self.log(f"Images downloaded: {len(saved)} → {out_dir}")
+        self.log(f"Images downloaded: {len(saved)} â†’ {out_dir}")
         return saved
 
     async def upload_images(self, file_paths: list[str]):
@@ -405,7 +405,7 @@ class SimpleFacebookPoster:
             desc_ok = await self._type_smart(await self._smart_field("Description"), d.get("description", ""), "Description")
 
             core_ok = all([year_ok, make_ok, model_ok, mileage_ok, price_ok, desc_ok])
-            self.log("Core fields populated successfully." if core_ok else "Core fields missing—verify visually.")
+            self.log("Core fields populated successfully." if core_ok else "Core fields missingâ€”verify visually.")
             return core_ok
         except Exception as e:
             self.log(f"Error filling vehicle listing: {e}")
@@ -458,7 +458,7 @@ class SimpleFacebookPoster:
         return False, None
 
     async def finalize_and_publish(self, listing: dict, prefer_no_groups: bool = True) -> tuple[bool, str | None]:
-        self.log("Finalizing listing (Publish flow)…")
+        self.log("Finalizing listing (Publish flow)â€¦")
 
         publish_buttons = [
             self.page.get_by_role("button", name="Publish"),

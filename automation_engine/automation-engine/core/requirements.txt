@@ -1,0 +1,14 @@
+@'
+Flask
+Flask-Cors
+waitress
+python-dotenv
+APScheduler
+SQLAlchemy
+requests
+pydantic
+rich
+# For the automation engine when you need it:
+playwright
+pillow
+'@ | Set-Content -Encoding utf8 .\automation-engine\requirements.txt

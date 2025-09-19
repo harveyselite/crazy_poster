@@ -1,4 +1,4 @@
-# debug_listings.py
+﻿# debug_listings.py
 import sqlite3, collections
 DB = r"C:/Crazy_poster/shared-resources/database/crazy_poster.db"
 CAMPAIGN_ID = 1

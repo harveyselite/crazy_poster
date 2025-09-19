@@ -1,4 +1,4 @@
-import argparse, json, os, sqlite3, sys, time
+﻿import argparse, json, os, sqlite3, sys, time
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -82,7 +82,7 @@ def cache_for_campaign(campaign_id: int, limit: int | None):
                       (str(out_dir), json.dumps(files), lid))
             conn.commit()
             cached+=1
-            print(f"✓ Cached {len(files)} images for listing {lid} → {out_dir}")
+            print(f"âœ“ Cached {len(files)} images for listing {lid} â†’ {out_dir}")
     conn.close()
     print(f"\nDone. Listings processed: {total}, cached: {cached}")
 

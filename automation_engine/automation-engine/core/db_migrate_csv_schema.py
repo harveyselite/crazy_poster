@@ -1,4 +1,4 @@
-# db_migrate_csv_schema.py
+﻿# db_migrate_csv_schema.py
 # One-time SQLite migrations for Crazy_poster CSV pipeline.
 import sqlite3
 from datetime import datetime, timezone

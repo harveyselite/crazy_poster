@@ -1,4 +1,4 @@
-# app.py
+﻿# app.py
 import csv
 import io
 import json
@@ -12,11 +12,29 @@ from typing import Optional, List
 
 from flask import Flask, request, redirect, url_for, render_template_string, flash
 from apscheduler.schedulers.background import BackgroundScheduler
+# --- at top ---
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Simple health check used by the UI
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 # ---- Paths & imports ---------------------------------------------------------
 ROOT = Path(r"C:/Crazy_poster")
 DB_PATH = ROOT / "shared-resources" / "database" / "crazy_poster.db"
-FB_AUTOMATION = ROOT / "automation-engine" / "facebook_automation"
+FB_AUTOMATION = ROOT / "automation_engine" / "facebook_automation"
 ASSETS = ROOT / "assets"
 IMAGE_CACHE_ROOT = ASSETS / "image-cache"
 
@@ -339,7 +357,7 @@ BASE_HTML = """
 <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 <main>
   <header>
-    <h1>Crazy Poster — Dashboard</h1>
+    <h1>Crazy Poster â€” Dashboard</h1>
     <nav>
       <a href="{{ url_for('dashboard') }}">Dashboard</a>
       <a href="{{ url_for('upload_csv') }}">Upload CSV</a>
@@ -446,7 +464,7 @@ def upload_csv():
             return redirect(request.url)
         try:
             cid = import_csv_bytes(campaign, file.read())
-            flash(f"✓ Imported CSV into campaign '{campaign}' (ID {cid})")
+            flash(f"âœ“ Imported CSV into campaign '{campaign}' (ID {cid})")
             return redirect(url_for("campaign_detail", campaign_id=cid))
         except Exception as e:
             flash(f"Error importing CSV: {e}")

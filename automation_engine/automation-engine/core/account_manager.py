@@ -1,4 +1,4 @@
-"""
+﻿"""
 Crazy_poster Account Manager
 Handles account creation, cloning, and management
 """
@@ -73,14 +73,14 @@ class AccountManager:
             # Add account to database
             self.add_account_to_database(account_name, facebook_email, str(account_path), chrome_port)
             
-            print(f"✓ Account '{account_name}' created successfully")
+            print(f"âœ“ Account '{account_name}' created successfully")
             print(f"  Folder: {account_path}")
             print(f"  Chrome Port: {chrome_port}")
             
             return True
             
         except Exception as e:
-            print(f"✗ Failed to create account '{account_name}': {str(e)}")
+            print(f"âœ— Failed to create account '{account_name}': {str(e)}")
             return False
     
     def add_account_to_database(self, account_name: str, facebook_email: str, 
@@ -150,11 +150,11 @@ class AccountManager:
             if account_path.exists():
                 shutil.rmtree(account_path)
             
-            print(f"✓ Account '{account_name}' deleted successfully")
+            print(f"âœ“ Account '{account_name}' deleted successfully")
             return True
             
         except Exception as e:
-            print(f"✗ Failed to delete account '{account_name}': {str(e)}")
+            print(f"âœ— Failed to delete account '{account_name}': {str(e)}")
             return False
     
     def clone_account(self, source_account: str, new_account_name: str, 
@@ -209,11 +209,11 @@ class AccountManager:
             self.add_account_to_database(new_account_name, new_facebook_email, 
                                        str(new_path), chrome_port)
             
-            print(f"✓ Account '{new_account_name}' cloned from '{source_account}'")
+            print(f"âœ“ Account '{new_account_name}' cloned from '{source_account}'")
             return True
             
         except Exception as e:
-            print(f"✗ Failed to clone account: {str(e)}")
+            print(f"âœ— Failed to clone account: {str(e)}")
             return False
     
     def clear_account_data(self, account_path: Path):

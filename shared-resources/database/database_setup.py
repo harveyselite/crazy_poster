@@ -1,4 +1,4 @@
-"""
+﻿"""
 Crazy_poster Database Setup
 Creates the SQLite database schema for the entire system
 """
@@ -145,7 +145,7 @@ class DatabaseSetup:
             )
         ''')
         
-        print("✓ All database tables created successfully")
+        print("âœ“ All database tables created successfully")
     
     def create_indexes(self):
         """Create database indexes for better performance"""
@@ -162,7 +162,7 @@ class DatabaseSetup:
         for index_sql in indexes:
             self.conn.execute(index_sql)
         
-        print("✓ Database indexes created successfully")
+        print("âœ“ Database indexes created successfully")
     
     def insert_default_settings(self):
         """Insert default system settings"""
@@ -181,7 +181,7 @@ class DatabaseSetup:
                 VALUES (?, ?)
             ''', (setting_name, setting_value))
         
-        print("✓ Default settings inserted")
+        print("âœ“ Default settings inserted")
     
     def setup_database(self):
         """Complete database setup process"""
@@ -194,10 +194,10 @@ class DatabaseSetup:
             self.insert_default_settings()
             
             self.conn.commit()
-            print("✓ Database setup completed successfully!")
+            print("âœ“ Database setup completed successfully!")
             
         except Exception as e:
-            print(f"✗ Database setup failed: {str(e)}")
+            print(f"âœ— Database setup failed: {str(e)}")
             if self.conn:
                 self.conn.rollback()
         

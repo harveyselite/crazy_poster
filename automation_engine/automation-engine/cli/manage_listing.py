@@ -1,11 +1,11 @@
-# manage_listing.py
+﻿# manage_listing.py
 import argparse, asyncio, sqlite3, sys
 from pathlib import Path
 
 ROOT = Path(r"C:/Crazy_poster")
 DB_PATH = ROOT / "shared-resources" / "database" / "crazy_poster.db"
 
-FB_AUTOMATION = ROOT / "automation-engine" / "facebook_automation"
+FB_AUTOMATION = ROOT / "automation_engine" / "facebook_automation"
 sys.path.append(str(FB_AUTOMATION))
 from facebook_poster_simple import SimpleFacebookPoster
 
