@@ -1,0 +1,17 @@
+# --- runtime data (don’t commit) ---
+account-instances/
+shared-resources/database/*.db
+shared-resources/database/backups/
+**/posting-history/
+**/logs/
+**/temp-images/
+**/browser-profile/
+
+# --- python & node clutter ---
+**/__pycache__/
+*.pyc
+*.pyo
+*.log
+automation-engine/venv/
+server/.venv/
+web-control-panel/node_modules/
